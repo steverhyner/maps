@@ -5,7 +5,7 @@ $out='';
 if(isset($_POST['userName2'])&& isset($_POST['pass'])){
 	$name2=$_POST['userName2'];
 	$pass=$_POST['pass'];
-	$stmt=$db->prepare("select salt from userLogin where uName=?");
+	$stmt=$db->prepare("select salt from login where uName=?");
 	$stmt->bindParam(1,$name2);
 	$stmt->execute();
 	if($row=$stmt->fetch()){
@@ -13,7 +13,7 @@ if(isset($_POST['userName2'])&& isset($_POST['pass'])){
 		$pass=$salt.$pass;
 		$hash=hash('sha512',$pass);
 		
-		$stmt=$db->prepare("SELECT 1 from userLogin where uName =? AND password=?");
+		$stmt=$db->prepare("SELECT 1 from login where uName =? AND password=?");
 		$stmt->bindParam(1,$name2);
 		$stmt->bindParam(2,$hash);
 		$stmt->execute();
