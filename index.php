@@ -44,6 +44,7 @@ if(isset($_POST['userName2'])&& isset($_POST['pass'])){
       src="https://maps.googleapis.com/maps/api/js?v=3sensor=true.exp&libraries=places&key=">
     </script>
     <script>
+<<<<<<< HEAD
   
   var map;
   var input;
@@ -52,6 +53,12 @@ if(isset($_POST['userName2'])&& isset($_POST['pass'])){
   var placed = {};
 
 
+=======
+// This sample uses the Place Autocomplete widget to allow the user to search
+// for and select a place. The sample then displays an info window containing
+// the place ID and other information about the place that the user has
+// selected..
+>>>>>>> origin/master
 
 function init() { //find current position then go to function doit and take location info along
   navigator.geolocation.getCurrentPosition(doit);
@@ -187,6 +194,7 @@ if(isset($_SESSION['user'])){
 
 ?>
 
+<<<<<<< HEAD
 </div><!--login-->
 
 </header>
@@ -224,3 +232,8 @@ copyright &copy; 2015 Steve Rhyner Web Development
 </div><!--foot-->
 	</body>
 </html>
+=======
+</div><!--container-->
+  </body>
+</html>
+>>>>>>> origin/master
