@@ -1,319 +1,226 @@
 <?php
-require_once('../../require/pdoConnect.php');
+SESSION_START();
+require_once('../../../require/pdoConnect.php');
 $out='';
-/*if(isset($_GET('adddress'))){
-$address=$_GET('adddress');
-$out=$address;
-}
-*/
-
+if(isset($_POST['userName2'])&& isset($_POST['pass'])){
+	$name2=$_POST['userName2'];
+	$pass=$_POST['pass'];
+	$stmt=$db->prepare("select salt from userLogin where uName=?");
+	$stmt->bindParam(1,$name2);
+	$stmt->execute();
+	if($row=$stmt->fetch()){
+		$salt=$row['salt'];
+		$pass=$salt.$pass;
+		$hash=hash('sha512',$pass);
+		
+		$stmt=$db->prepare("SELECT 1 from userLogin where uName =? AND password=?");
+		$stmt->bindParam(1,$name2);
+		$stmt->bindParam(2,$hash);
+		$stmt->execute();
+		if($stmt->fetch()){
+					
+					$_SESSION['user']=$name2;
+					setCookie('user',$name2,time()+360000);
+		}else{
+			$out.="bad user name/password";
+		}//good or bad login?
+			
+	}else{
+		$out.="bad user name/password";
+	
+	}//if user exists
+}//isset
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PlaceID finder</title>
+    <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
 	<link rel="stylesheet" href="maps.css">
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&signed_in=true"></script>
-	<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>-->
-
+	        
+     <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?v=3sensor=true.exp&libraries=places&key=">
+    </script>
     <script>
-// This sample uses the Place Autocomplete widget to allow the user to search
-// for and select a place. The sample then displays an info window containing
-// the place ID and other information about the place that the user has
-// selected.
+  
+  var map;
+  var input;
+  var lat;
+  var lon;
+  var placed = {};
 
-function initialize() {
+
+
+function init() { //find current position then go to function doit and take location info along
+  navigator.geolocation.getCurrentPosition(doit);
+  }
+	 
+function doit(location){// create variables from current location then loads map to current position
+	  console.log(location);
+	 // alert(location.coords.latitude + ', ' + location.coords.longitude);
+	  currentCoords=(location.coords.latitude + ', '+ location.coords.longitude);
+	 // alert(currentCoords);
+	  lat=location.coords.latitude;
+      lon=location.coords.longitude;
+	  centerCoords=new google.maps.LatLng(lat,lon)
+	  
+  var mapdiv=document.getElementById('map-canvas');// we will put map in map-canvas div
+  
   var mapOptions = {
-    center: {lat: -33.8688, lng: 151.2195},
-    zoom: 13
-  };
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
+    zoom: 12,
+	center: centerCoords
+  };//minimum map option requirements
+   map = new google.maps.Map(mapdiv,mapOptions);// put the new map on the page using the options
+   input = (document.getElementById('search'));//this is the search box
 
-  var input = /** @type {HTMLInputElement} */(
-      document.getElementById('pac-input'));
+   
+  var autocomplete = new google.maps.places.Autocomplete(input);// this helps user auto complete in  search box to find location
+  autocomplete.bindTo('bounds', map);// set the bounds on creation of the autoComplete object
 
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.bindTo('bounds', map);
+ // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);// position of autoComplete search box
+  
+    
+    
 
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-  var infowindow = new google.maps.InfoWindow();
-  var marker = new google.maps.Marker({
-    map: map
+
+
+  
+  
+  
+  var infowindow = new google.maps.InfoWindow();//create a info window for locations
+  var marker = new google.maps.Marker({// put pin on current location(centercoords)
+  position: centerCoords,
+    map: map,
+	
   });
+  
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.open(map, marker);
-  });
-
-  google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    infowindow.close();
+  });//open info window if marker is clicked
+  
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {// if a new location is selected from autoComplete do the following
+    infowindow.close();//close info window
     var place = autocomplete.getPlace();
-    if (!place.geometry) {
+	//	alert(place.formatted_address);
+	//alert(place.place_id);
+	id=place.place_id;
+	
+	//alert(id +" :is the place_id")
+	//alert(place.name);
+	//alert(place.geometry.location);
+	local=place.geometry.location;
+     placed[0]={ "id": id,"local": local};//push place info into array for later use
+	//alert(local +" :is the local")
+	//alert(place.geometry.viewport);
+	 
+    if (!place.geometry) {// dont do anything if you cant find location?
       return;
     }
 
-    if (place.geometry.viewport) {
+    if (place.geometry.viewport) {// if you can find location recenter map to that location
+	console.log(place.formatted_address);
+	console.log(place.url);
+	console.log(place.geometry.location);
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
       map.setZoom(17);
     }
 
-    // Set the position of the marker using the place ID and location
-    marker.setPlace({
-      placeId: place.place_id,
-      location: place.geometry.location
-    });
-    marker.setVisible(true);
-
-    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-        'Place ID: ' + place.place_id + '<br>' +
-        place.formatted_address);
-    infowindow.open(map, marker);
+   
   });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
-    </script>
+	 
+	  
+ }//doit makemap
+  function pinLocation(){ // Set   new marker at the position of the new place ID and location
+  
+	  id=placed[0].id;
+	  local=placed[0].local;
+	  alert(local);
+	   var marker = new google.maps.Marker({// put pin on current location(centercoords)
+  position: local,
+    map: map,
 	
-	 <script>
-var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-var anchorage = new google.maps.LatLng(61.2180556, -149.9002778);
-var mexico = new google.maps.LatLng(19.4270499, -99.1275711);
-var equator = new google.maps.LatLng(0,0);
-var london = new google.maps.LatLng(51.5001524, -0.1262362);
-var johannesburg = new google.maps.LatLng(-26.201452, 28.045488);
-var kinshasa = new google.maps.LatLng(-4.325, 15.322222);
-var sydney = new google.maps.LatLng( -33.867139, 151.207114);
-
-var locationArray = [chicago,anchorage,mexico,equator,london,johannesburg,kinshasa,sydney];
-var locationNameArray = ['Chicago','Anchorage','Mexico City','The Equator','London','Johannesburg','Kinshasa','Sydney'];
-
-// Note: this value is exact as the map projects a full 360 degrees of longitude
-var GALL_PETERS_RANGE_X = 800;
-
-// Note: this value is inexact as the map is cut off at ~ +/- 83 degrees.
-// However, the polar regions produce very little increase in Y range, so
-// we will use the tile size.
-var GALL_PETERS_RANGE_Y = 510;
-
-function degreesToRadians(deg) {
-  return deg * (Math.PI / 180);
-}
-
-function radiansToDegrees(rad) {
-  return rad / (Math.PI / 180);
-}
-
-/**
- * @constructor
- * @implements {google.maps.Projection}
- */
-function GallPetersProjection() {
-
-  // Using the base map tile, denote the lat/lon of the equatorial origin.
-  this.worldOrigin_ = new google.maps.Point(GALL_PETERS_RANGE_X * 400 / 800,
-      GALL_PETERS_RANGE_Y / 2);
-
-  // This projection has equidistant meridians, so each longitude degree is a linear
-  // mapping.
-  this.worldCoordinatePerLonDegree_ = GALL_PETERS_RANGE_X / 360;
-
-  // This constant merely reflects that latitudes vary from +90 to -90 degrees.
-  this.worldCoordinateLatRange = GALL_PETERS_RANGE_Y / 2;
-};
-
-GallPetersProjection.prototype.fromLatLngToPoint = function(latLng) {
-
-  var origin = this.worldOrigin_;
-  var x = origin.x + this.worldCoordinatePerLonDegree_ * latLng.lng();
-
-  // Note that latitude is measured from the world coordinate origin
-  // at the top left of the map.
-  var latRadians = degreesToRadians(latLng.lat());
-  var y = origin.y - this.worldCoordinateLatRange * Math.sin(latRadians);
-
-  return new google.maps.Point(x, y);
-};
-
-GallPetersProjection.prototype.fromPointToLatLng = function(point, noWrap) {
-
-  var y = point.y;
-  var x = point.x;
-
-  if (y < 0) {
-    y = 0;
-  }
-  if (y >= GALL_PETERS_RANGE_Y) {
-    y = GALL_PETERS_RANGE_Y;
-  }
-
-  var origin = this.worldOrigin_;
-  var lng = (x - origin.x) / this.worldCoordinatePerLonDegree_;
-  var latRadians = Math.asin((origin.y - y) / this.worldCoordinateLatRange);
-  var lat = radiansToDegrees(latRadians);
-  return new google.maps.LatLng(lat, lng, noWrap);
-};
-
-function initialize() {
-
-  var gallPetersMap;
-
-  var gallPetersMapType = new google.maps.ImageMapType({
-    getTileUrl: function(coord, zoom) {
-      var numTiles = 1 << zoom;
-
-      // Don't wrap tiles vertically.
-      if (coord.y < 0 || coord.y >= numTiles) {
-        return null;
-      }
-
-      // Wrap tiles horizontally.
-      var x = ((coord.x % numTiles) + numTiles) % numTiles;
-
-      // For simplicity, we use a tileset consisting of 1 tile at zoom level 0
-      // and 4 tiles at zoom level 1. Note that we set the base URL to a
-      // relative directory.
-      var baseURL = 'images/';
-      baseURL += 'gall-peters_' + zoom + '_' + x + '_' + coord.y + '.png';
-      return baseURL;
-    },
-    tileSize: new google.maps.Size(800, 512),
-    isPng: true,
-    minZoom: 0,
-    maxZoom: 1,
-    name: 'Gall-Peters'
   });
-
-  gallPetersMapType.projection = new GallPetersProjection();
-
-  var mapOptions = {
-    zoom: 0,
-    center: new google.maps.LatLng(0,0),
-    mapTypeControlOptions: {
-      mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'gallPetersMap']
-    }
-  };
-  gallPetersMap = new google.maps.Map(document.getElementById('map-canvas2'),
-      mapOptions);
-
-  gallPetersMap.mapTypes.set('gallPetersMap', gallPetersMapType);
-  gallPetersMap.setMapTypeId('gallPetersMap');
-
-  var coord;
-  for (coord in locationArray) {
-    new google.maps.Marker({
-      position: locationArray[coord],
-      map: gallPetersMap,
-      title: locationNameArray[coord]
-    });
-  }
-
-  google.maps.event.addListener(gallPetersMap, 'click', function(event) {
-    alert('Point.X.Y: ' + event.latLng);
-  });
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-
+	  };
+google.maps.event.addDomListener(window, 'load', init);//when window loads go to init function and get current location
     </script>
-	
   </head>
-  <body>
-  <div class='container'>
-  <header>
+   <body>
+    <header>
 <h1>Restaurant Check-in Club</h1>
   
- <a href="/webProgramming/index.php"><img src="images/rhyner_logotype.png" alt='steve logo'></a>
+ <a href="/"><img src="images/rhyner_logotype.png" alt='steve logo'></a>
+ <?php
  
- 
- <nav id="horizontal">
-		 <ul>
-		   
-		<li><a href="#">#</a> 
-			<ul>
-				 <li><a href="#">#</a></li>
-				 <li><a href="#">#</a></li>
-			</ul>
-			 
-		</li>
-		<li><a href="#">#</a> 
-			<ul>
-				 <li><a href="#"></a></li>
-				 
-			</ul>
-			 
-		</li>
-		
-         <li><a href="#">#</a> 
-			<ul>
-				 <li><a href="#">#</a></li>
-			</ul>
-			 
-		</li>
-		<li><a href="#">#</a> 
-			<ul>
-				 <li><a href="#"></a></li>
-			</ul>
-			 
-		</li>
-		<li><a href="#">#</a> 
-			<ul>
-				 <li><a href="#">#</a></li>
-			</ul>
-			 
-		</li>
-		<li><a href="#">#</a> 
-			<ul>
-				 <li><a href="#">#</a></li>
-			</ul>
-			 
-		</li>	<li><a href="#">#</a> 
-			<ul>
-				 <li><a href="#">#</a></li>
-				 
-			</ul>
-			 
-		</li>
-		
-		 </ul>
-		
-	  <p class="clearfix"></p>
-	</nav>
-	 
+require_once'nav.php';
+?>
      
    
- 
+ <div class="login">
+<?php
+if(isset($_SESSION['user'])){
+	echo"<h2>hello {$_SESSION['user']} you are logged in  &nbsp;<a href='logout.php'>logout</a></h2>";
+		 
+}else{
+	echo"<h2>hello you are not logged in.  please login or   &nbsp;<a href='register.php'>register</a> to participate</h2>";
+	 
+	?>
+	<form method="POST" action="index.php" class="loginForm">
+	<label>user name: </label><input type="text" name="userName2" id='userName' placeholder='user name'value='<?php if(isset($_COOKIE['user']))echo$_COOKIE['user']; ?>'>
+	<label>password: </label><input type="password" name="pass" id='pass1'placeholder='password'>
+	
+	
+	<input type="submit" name="submit" id='submit'value='login'>
+
+ <?php
+ echo$out;
+ ?>
+	</form>
+	<?php
+}//isset session user
+	
+
+
+?>
+
+</div><!--login-->
 
 </header>
-<div id="main">
-<div class='left'>
-	<form method ='GET'action='<?php echo $_SERVER['PHP_SELF'] ?>'>
-		<h2>must be logged in to upload a new location to your personal map</h2>
-		<input id="pac-input" class="controls" type="text" name='address'
-			placeholder="Enter a location">
-		<div id="map-canvas"></div>
-		
-		<textarea name='info' cols='20' rows='10'>comment</textarea>
-		<input type='file' name='upload'>
-		<input type='submit' value='upload address'>
+ <div class="main">
+<?php
+if(isset($_SESSION['user'])){?>
+ <div id='mapForm'>
+ <h2 id='maph2'>Use form to pin restaurant location, then upload location with a comment and/or picture to remember the occassion</h2>
+ <div id="map-canvas"></div>
+ 
+ <form  id='upload'action='<?php echo $_SERVER['PHP_SELF']?>' method='GET'>
+  <div id='btn'>
+  
+  <input id="search" class='controls' type="text" size="50" placeholder="enter search here"><br>
+  <input type="button" onclick="pinLocation()" value="pin restaurant location" id='button' />
+ </div><!--btn-->
+ <textarea name='info' cols='20' rows='10'>comment</textarea><br>
+		<input type='file' name='upload' value='upload picture' placeholder='upload picture'><br>
+		<input type='submit' value='upload info and retaurant location'>
 
-		<?php
-		echo$out?>
-	</form>
-</div><!--left-->
-<div class='right'>
-<h2>must be logged in to see your personal map</h2>
-   <div id="map-canvas2"></div>
-</div><!--right-->
-	<p class="clearfix"></p>
-</div><!--main-->	
-
-
-</div><!--container-->
-  </body>
+ </form>
+ </div><!--mapform-->
+ <?php
+ }else{?>
+	 <div id='mapForm'>
+ <h1 id='loginh2'>please log in to participate in logging your restaurant history</h1>
+ <div id="map-canvas"></div>
+ </div><!--mapform-->
+ <?php
+ }
+ ?>
+	</div><!--main-->
+<div class='foot'>
+copyright &copy; 2015 Steve Rhyner Web Development
+</div><!--foot-->
+	</body>
 </html>

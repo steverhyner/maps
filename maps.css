@@ -1,71 +1,28 @@
- *{
-	padding:0;
-	margin:0;
-	border:0;
-}
-.container{
-	width: 100%;
-	overflow:hidden;
-	 
-}
-header{
+   
+   .main{
+  
+   overflow:hidden;
+        
+        margin: 0px;
+        padding: 0px;
+		
+   }
+   #map-canvas,#main-canvas{
+	  overflow:hidden;
+        height: 800px;
+        margin: 0px;
+        padding: 0px;
+			border-bottom: 2px solid red;
+      }
+	  header{
+	   position: relative;
 	padding: 10px;
 	background: #ccc;
 	border-bottom: 2px solid red;
 	 
 }
-#main{
-width: 100%;
-padding: 10px;
-	background: #ccc;
-	border-bottom: 2px solid red;
-	min-height: 500px;
-}
-  .left{
-	float:left;
-	width:50%;
-  }
-  .right{
-	float:right;
-	width:50%;
-  }
-   #map-canvas {
-    
-        height: 400px;
-		width:90%;
-        margin: 10px;
-        padding: 10px
-      }
-	   #map-canvas2 {
-	   
-       height: 400px;
-	   width:90%;
-        margin: 10px;
-        padding: 10px
-      }
-      .controls {
-        background-color: #fff;
-        border-radius: 2px;
-        border: 1px solid transparent;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        box-sizing: border-box;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        height: 32px;
-        margin-left: 17px;
-        margin-top: 16px;
-        outline: none;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
-      }
-
-      .controls:focus {
-        border-color: #4d90fe;
-      }
-
-/*horizontal ==========================================================*/
+ 
+	  /*horizontal ==========================================================*/
 
 #horizontal {
 	
@@ -122,10 +79,89 @@ padding: 10px;
 	background-color: #191970;
 
 }
+ /*horizontal ==========================================================*/
 .clearfix{
 	clear:both;	
 }
 header h1{
 	text-align:center;
 	color:black;
+}
+ /*==========================================================*/
+ .foot{
+ min-height:100px;
+ background:#ccc;
+ }
+  
+ #btn{
+      width:95%;
+	    
+	  margin:3px;
+       z-index: 5;
+        background-color: #ccc;
+        padding: 3px;
+        border: 1px solid #999;
+
+ }
+ #search{
+ width:90%;
+ margin:3px;
+ }
+ #button{
+ margin:3px;
+	width:90%;
+ }
+ #mapForm{
+  position: relative;
+ }
+ #upload{
+    background:#ccc;
+    background:rgba(255,255,255,0.5);
+	 
+    width:35%;
+    outline:1px solid black;
+    position:absolute;
+	   top: 9%;
+	     left: 6%;
+		 padding:5px;
+		 margin:15px;
+ }
+ #upload  input{
+  padding:1px;
+  margin:5px;
+ }
+ #maph2{
+	background:#ccc;
+ z-index: 6;
+	 position:absolute;
+	   top: 1%;
+	     right: 5%;
+		 padding:5px;
+ }
+ #regh2 {
+	text-align:center;
+ }
+ #loginh2{
+	background:#ccc;
+ z-index: 6;
+	 position:absolute;
+	   top: 1%;
+	     left: 15%;
+		 padding:5px;
+ }
+ #register{
+ width: 50%;
+outline: 1px solid black;
+margin: 5px auto;
+padding: 15px;
+ }
+ 
+ #register label{
+ width: 20%;
+	text-align:right;
+	display:inline-block; 
+ }
+ 
+#register input{
+	margin: 5px;
 }
