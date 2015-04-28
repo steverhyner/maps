@@ -1,11 +1,17 @@
 <?php
 SESSION_START();
-require_once'helpers.php';
-renderHeader('home');
+ 
+require_once('../../require/pdoConnect.php');
 
 require_once'phpLoginCheck.php';
-
 ?>
+  
+
+ 
+  <?php
+  require_once'helpers.php';
+  renderHeader('home');
+  ?>
 
  <body>
 <header>
@@ -18,17 +24,19 @@ require_once'phpLoginCheck.php';
 		require_once'nav.php';
 		?>
 		</div><!--right-->  
-		<?php
-	  require_once'loginForm.php';
-	  ?>
+				<?php
+require_once'loginForm.php';
+?>
   </div><!--both-->
 </header>
  <div class="main">
+  <div id='mapForm'>
+   <div id="map-canvas"></div>
 	<?php
 	if(isset($_SESSION['user'])){?>
-		 <div id='mapForm'>
+		
 			<h2 id='maph2'>Use form to pin restaurant location, then upload location with a comment and/or picture to remember the occassion</h2>
-		 <div id="map-canvas"></div>
+		
 		 
 			<form  id='upload'action='<?php echo $_SERVER['PHP_SELF']?>' method='POST'>
 				<div id='btn'>
@@ -41,16 +49,17 @@ require_once'phpLoginCheck.php';
 					<input id='btnSubmit' type='submit' value='upload info and retaurant location'>
 				</div>
 			</form>
-		 </div><!--mapform-->
+	
 		 <?php
 	}else{?>
-		 <div id='mapForm'>
+		 
 			<h1 id='loginh2'>please log in to participate with logging your restaurant history</h1>
-		 <div id="map-canvas"></div>
-		 </div><!--mapform-->
+		  
+		
 		 <?php
 	}
 	?>
+	 </div><!--mapform-->
 </div><!--main-->
 <div class='foot'>
 	copyright &copy; 2015 Steve Rhyner Web Development

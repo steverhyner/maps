@@ -1,13 +1,20 @@
 <?php
 SESSION_START();
-require_once'helpers.php';
-renderHeader('thank-you');
-require_once('../../../require/pdoConnect.php');
+require_once('../../require/pdoConnect.php');
  
+ 
+ 
+	 
+	header("refresh:2; index.php");
+	 
 ?>
-
-  <script type="text/javascript" src="map.js"> </script>
-  </head>
+ 
+ 
+ 
+   <?php
+  require_once'helpers.php';
+  renderHeader('thank-you');
+  ?>
    <body>
     <header>
 <h1>Restaurant History App</h1>
@@ -21,18 +28,12 @@ require_once'nav.php';
      </div><!--right-->  
    
  
-<?php
- 
- 
-	 
-	header("refresh:2; index.php");exit();
-	 
-?>
+
 	 
 
- <?php
- require_once'loginForm.php';
- ?>
+ 	<?php
+require_once'loginForm.php';
+?>
 </div><!--both-->
 </header>
  <div class="main">

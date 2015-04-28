@@ -1,10 +1,15 @@
 <?php
 SESSION_START();
-require_once'helpers.php';
-renderHeader('registration');
-require_once('../../../require/pdoConnect.php');
+require_once('../../require/pdoConnect.php');
+ 
 require_once'phpRegistrationCheck.php';
 ?>
+ 
+   <?php
+  require_once'helpers.php';
+  renderHeader('register');
+  ?>
+
  
 <body>
 <header>
@@ -17,9 +22,11 @@ require_once'phpRegistrationCheck.php';
 			?>
 			 
 		</div><!--right--> 
+		 
 		<?php
-		require_once'loginForm.php';
-		?>
+require_once'loginForm.php';
+?>
+ 
 	</div><!--both-->
 </header>
 <div class="main">
@@ -36,7 +43,9 @@ require_once'phpRegistrationCheck.php';
 				<label>Repeat Password: </label><input type='passwod' name='pass2'><br>
 				<label>remember me: </label><input type='checkbox' name='remember' id='remember'><br>
 			    <input type='submit' value='Register'>
-
+			 <?php
+			 echo $out
+			 ?>
 			</form>
 			 <?php
 		 }else{?>

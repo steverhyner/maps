@@ -1,5 +1,4 @@
 <?php
- 
 require_once('../../../require/pdoConnect.php');
 $out='';
 if(isset($_POST['userName2'])&& isset($_POST['pass'])){

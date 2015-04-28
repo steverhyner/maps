@@ -1,8 +1,6 @@
 <?php
 SESSION_START();
-require_once'helpers.php';
-renderHeader('log-out');
-require_once('../../../require/pdoConnect.php');
+require_once('../../require/pdoConnect.php');
  
 	 
 	if(isset($_SESSION['user'])){
@@ -10,9 +8,15 @@ require_once('../../../require/pdoConnect.php');
 	$_SESSION=array();
 	SESSION_DESTROY();
 	SESSION_UNSET();
-	header("refresh:2; index.php");exit();
+
 	}
+header("refresh:2; index.php"); 
 ?>
+   <?php
+  require_once'helpers.php';
+  renderHeader('logout');
+  ?>
+
  
 <body>
 <header>
@@ -24,9 +28,9 @@ require_once('../../../require/pdoConnect.php');
 			require_once'nav.php';
 			?>
 		</div><!--right-->  
-	    <?php
-		require_once'loginForm.php';
-		?>
+	  		<?php
+require_once'loginForm.php';
+?>
 	</div><!--both-->
 </header>
 <div class="main">
