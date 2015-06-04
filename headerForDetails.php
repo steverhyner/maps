@@ -7,72 +7,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?v=3sensor=true.exp&libraries=places&key="></script>
 	 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 	   <style>
-	   
-.popout{
- 
-}
-.windowImg{
-   outline:1px solid red;
-   margin:1%;
- }
-	  #smalltable{
-		width:100%;
-		border-collapse:collapse;
-		
-}	  
-
-
-  
-#smalltable img{
-		outline:1px solid red;
-		width:80%;
-	 }
-th{
-	 background:#ccc;
-	 text-align:center;
-	 font-family:funFont;
-	 font-size:105%;
-	 }
-	 td:nth-child(3){
-		 text-align:center;
-		  width:15%;
-	 }
-	  td:first-child{
-	 padding:5px;
-	 overflow:hidden;
-	 width:17%;
-	text-align:center;
-	 }
-	 td{
-	 padding:5px;
-	 overflow:hidden;
-	 width:33%;
-	 }
-	 tr:nth-child(even){
-		background:#EBEBEB;
-	 }
-	 
-	 
-	 
-	 
- 
+ 	
  	 
 @font-face{
 	font-family:banger;
@@ -98,7 +50,6 @@ body{
 	 
 
 	  /*horizontal ==========================================================*/
-
 #horizontal {
 	float:right;
 	 
@@ -183,7 +134,8 @@ body{
 	float:right;
 	margin-right:12%;
 	margin-top:4%;
-}.clearfix{
+}
+.clearfix{
 	clear:both;	
 }
  
@@ -202,22 +154,24 @@ body{
  }
  
  
- 
  /*========login form in header==================================================*/
-  #low{
-  color:red;
+#low{
+color:red;
  margin-left:60%;
  width:50%;
  }
  .login{
+	
+	 
 	 font-family:"Comic Sans MS", cursive, sans-serif;
 	float:left;
+	 
 	padding:5px;
     z-index: 2;
-	 
 }
  #submit{
-	font-family:"Comic Sans MS", cursive, sans-serif;
+ font-family:"Comic Sans MS", cursive, sans-serif;
+	 
 	background:#5E89CD;
 	color:white;
 	 
@@ -233,155 +187,19 @@ body{
 	 
  }
  .login h2{
- margin: 0px auto;
- 
-  font-family:funFont;
-  font-size:22px;
+    margin: 0px auto;
+	font-family:funFont;
+	font-size:22px;
  }
  /*=======main -top of mapvdiv==================================================*/
  
  
- 
-  
- .tom{
-font-family:"Comic Sans MS", cursive, sans-serif;
- 
- width:90%;
- margin:auto;
- }
- /*=======main - map area==================================================*/
- .left{
-	 overflow:hidden;
-	 float:left;
-	 
-	 width:28%;
-	 margin:1%;
- }
- 
-  #regbtn {
-	   
-	   box-shadow: 0 0 3px red;
-	   display:block;
-	   text-decoration:none;
-	   padding:2%;
-	   background:#B3D1FF;
-	   border-radius: 15px;
-	}
-#regbtn:hover {
-	 
-	   box-shadow: 0 0 3px black;
-	   color:white;
-	   display:block;
-	   background:#7A9DD4;
-	}
-#regbtn:active{
-	   
-	     box-shadow: 0 0 3px black;
-	  color:red;
-	  display:block;
-	   
-	   background:#7A9DD4;
-	   }
-#btnh2{
-	 font-family:"Comic Sans MS", cursive, sans-serif;
-	 padding:2%;
-	 margin:auto;
-	 text-align:center;
-	width:75%;
-	 
-	}
-  #map-canvas{
-  float:right;
-  }
-  #map-canvas {
-   outline:1px solid red;
-	    overflow:hidden;
-        min-height: 500px;
-        margin: 0px;
-        padding: 0px;
-	 margin:1%;
-		width:68%;
-   }
-   #main-canvas{
-   overflow:hidden;
-        min-height: 500px;
-        margin: 0px;
-        padding: 0px;
-	 margin:1%;
-		width:98%;
-   }
-  #loginh2{
-  font-family:"Comic Sans MS", cursive, sans-serif;
-	background:#ccc;
-    z-index: 6;
-    position:absolute;
-	top: 1%;
-	left: 15%;
-	padding:5px;
- }
-   .maph2{
-   font-family:"Comic Sans MS", cursive, sans-serif;
-   font-size:30px;
-	 
-	 text-align:center;
-	 
-	 
-	 
-     padding:5px;
- }
-  .maph23{
-   font-family:"Comic Sans MS", cursive, sans-serif;
-   
-	 
-    padding:5px;
- }
-  
- /*========map form minus search box==================================================*/
-   #mapForm{
-	position: relative;
-	 
-	
- }
-
-
-   
- #textBox{
-	
-	margin-top:5px;
- }
- #userInput{
-    margin-left:1%;
-     margin-bottom:1%;
- }
- #btnSubmit{
-	margin-top:1%;
- }
- /*======= map form search /autocomplete area and button==================================================*/
- #btn{
-      width:96%;
-	  margin-left:1%;
-      z-index: 5;
-      background-color: #ccc;
-      padding: 3px;
-      border: 1px solid #999;
-
- }
- #search{
-
-	width:96.3%;
-	margin-left:  1.5%;
- }
- #button{
-	margin-left:  1.5%;
-	width:97%;
- }
-
- /*========registration form on registration page==================================================*/
+  /*========registration form on registration page==================================================*/
   #register{
     background:#ccc;
-    background:rgba(255,255,255,0.9);
-	width:33%;
-    outline:1px solid red;
+   outline:1px solid red;
+	width:90%;
+    
    
 	padding:5px;
 	 z-index: 3;
@@ -390,29 +208,132 @@ font-family:"Comic Sans MS", cursive, sans-serif;
  
  
  #register label{
-	width: 30%;
-	text-align:right;
+	font-size:140%;
+	 
+	 
 	display:inline-block; 
  }
- .regh2 {
-	font-size:30px;
-    font-family:"Comic Sans MS", cursive, sans-serif;
-	text-align:center;
-	  
- }
- .regp{
-  font-weight:bold;
-    width:90%;
-	  margin: 15px auto;
-	  
- }
+  hr{
+   border: 0;
+  height:1px;
+   color:red;
+   background:red;
+    outline:1px solid red;
+   
+   }
+  
 #register input{
 	margin: 5px;
 }
+#displayComments{
+	margin-top:2%;
+	 outline:1px solid red;
+	 font-size:140%;
+	 padding:1%;
+}
+  
+ 
+ /*=======main - map area==================================================*/
+ .left{
+  
+	 float:left;
+	 font-family:funFont;
+	 outline:1px solid red;
+	 width:48%;
+	 margin:1%;
+ }
+  .left2{
+  
+	 float:left;
+	 font-family:funFont;
+	  
+	 width:18%;
+	 margin:1%;
+ }
+ .lefty{
+  
+	 float:left;
+	 font-family:funFont;
+	  outline:1px solid red;
+	 width:18%;
+	 margin:1%;
+ }
+ 
+  #map-canvas {
+   float:right;
+   outline:1px solid red;
+	overflow:hidden;
+    min-height: 500px;
+    padding: 0px;
+	 margin:1%;
+		width:48%;
+   }
+   #map-canvas2 {
+   float:right;
+   outline:1px solid red;
+	overflow:hidden;
+    min-height: 500px;
+    padding: 0px;
+	 margin:1%;
+		width:78%;
+   }
+   .detailh2{
+    
+   
+   margin:-10px;
+   }
+   .detailh2img  {
+  
+   width:100%;
+		 
+   }
+ .detailh2img img{
+ 
+		outline:1px solid red;
+   }
+   .logged{
+       width:90%;
+   
+	margin-left: 3% ;
+}
+ 
+   .maph2{
+   font-family:"Comic Sans MS", cursive, sans-serif;
+   font-size:30px;
+	text-align:center;
+    padding:5px;
+ }
+    .maph23{
+   font-family:"Comic Sans MS", cursive, sans-serif;
+ 
+	 
+    padding:5px;
+ }
+ 
+   .windowImg{
+	   outline:1px solid red;
+	   margin:1%;
+   }
+ #infoWindow{
+	  width:20px;
+	  outline:1px solid red;
+  }
+ /*========map form minus search box==================================================*/
+   #mapForm{
+	 overflow:hidden;
+	 margin:auto;
+	 outline:1px solid black;
+	
+ }
+
+
+   
+  
+ 
   /*details page ==========================================================*/ 
 	   .details{
-	 outline:1px solid red;
-	 width:80%;
+	
+	 width:90%;
 	 margin:auto;
 	 padding:3%;
  
@@ -423,7 +344,51 @@ font-family:"Comic Sans MS", cursive, sans-serif;
 	  margin-left:15%;
 	 width:60%;
  	}
-	 /* ==========================================================*/ 
+	 /* ===================table detail page================================*/ 
+	 table{
+	 
+		 width:100%;
+		 border-collapse:collapse;
+	 }
+	 
+	 table img{
+		outline:1px solid red;
+		width:20%;
+	 }
+	  th{
+		 background:#5E89CD;
+		 text-align:center;
+		 font-family:funFont;
+		 font-size:175%;
+	 }
+	  td:nth-child(2){
+		    	border-right: 1px solid red;
+				width:25%;
+	  }
+	  td:nth-child(3){
+				width:45%;
+		    	border-right: 1px solid red;
+	  }
+	 td:nth-child(4){
+			width:15%;
+			text-align:center;;
+	 }
+	  td:first-child{
+	  	border-right: 1px solid red;
+		 padding:5px;
+		 overflow:hidden;
+		 width:15%;
+		text-align:center;
+	 }
+	 td{
+		 border-bottom: 1px solid red;
+		 padding:5px;
+		 overflow:hidden;
+		 
+	 }
+	 tr:nth-child(even){
+		background:#EBEBEB;
+	 }
  /*========footer==================================================*/
  
  footer{
@@ -590,7 +555,5 @@ font-family:"Comic Sans MS", cursive, sans-serif;
 #footparagraph2 div p{
 	margin-left: 15%;
 }
-
- 
- </style><script type="text/javascript" src="showLocations.js"> </script>
+ </style><script type="text/javascript" src="detailsJs.js"> </script>
  </head>

@@ -1,51 +1,37 @@
 <?php
 SESSION_START();
 require_once('../../require/pdoConnect.php');
- 
- 
- 
-	 
-	header("refresh:2; index.php");
-	 
-?>
- 
- 
- 
-   <?php
-  require_once'helpers.php';
-  renderHeader('thank-you');
-  ?>
-   <body>
-    <header>
-<h1>Restaurant History App</h1>
+require_once'helpers.php';
+renderHeader('thank-you');
+ ?>
+<body>
+	<header>
+		<div class="top">
+			<a href="index.php"><img src="images/header.png"></a>
+		    <h1>Location History App</h1>
+		</div>
+		  
+		<div id="both">
   
- <div id="both">
-  <div id="right">
- <?php
- 
-require_once'nav.php';
-?>
-     </div><!--right-->  
-   
- 
-
-	 
-
- 	<?php
-require_once'loginForm.php';
-?>
-</div><!--both-->
-</header>
- <div class="main">
- <div id='mapForm'>
- <div id="map-canvas"></div>
-  
- 	 <h2 class='regh2'>thank you for registering</h2>
-  
-  </div><!--mapform-->
+			   
+			<?php
+			require_once'loginForm.php';
+			?>
+						<div id="right">
+				 <?php
+					require_once'nav.php';
+				 ?>
+			</div><!--right-->
+		</div><!--both-->
+	</header>
+	 <div class="main">
+	 <div id='mapForm'>
+	    <h1 class='regh2'>thank you for registering.  Must be logged out to register!</h1>
+		<div id='extra'></div><!--extra-->
+	 </div><!--mapform-->
 	</div><!--main-->
-<div class='foot'>
-copyright &copy; 2015 Steve Rhyner Web Development
-</div><!--foot-->
-	</body>
+			<?php
+			require_once'foot.php';
+			?>
+</body>
 </html>

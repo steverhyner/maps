@@ -1,4 +1,4 @@
-
+ 
 
 function init() { // now I will take that js array of sample's upload info and break it apart into several individual arrays
 
@@ -124,9 +124,9 @@ function init() { // now I will take that js array of sample's upload info and b
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
 			 
-                infoWindow.setContent('<p class="popout">'+locationNames[i]+ '<br>' + 'user name: ' + userNames[i] + '<br>' + 
-									'date posted: ' +   timeStamp[i] + '<br>' + 'user comments: ' +  userComments[i] + '<br>' +
-									'your picture upload: ' + '<a href="details.php?ID='+ locationIds[i]+'"><img   class="windowImg" width=30%;   src="uploads/'+fileNames[i]+'"></a>'+'</p>')
+                infoWindow.setContent('<p class="popout">'+locationNames[i]+ '<br>' + 
+									'date posted: ' +   timeStamp[i] + '<br>' +  
+									'your picture upload: <img   class="windowImg" width=30%;   src="uploads/'+fileNames[i]+'">'+'</p>')
                 infoWindow.open(map, marker);
             }
         })(marker, i));

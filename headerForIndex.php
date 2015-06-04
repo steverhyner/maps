@@ -24,11 +24,60 @@
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 	   <style>
-	
- @font-face{
+	   
+.popout{
+ 
+}
+.windowImg{
+   outline:1px solid red;
+   margin:1%;
+ }
+	  #smalltable{
+		width:100%;
+		border-collapse:collapse;
+		
+}	  
+
+
+  
+#smalltable img{
+		outline:1px solid red;
+		width:80%;
+	 }
+th{
+	 background:#ccc;
+	 text-align:center;
+	 font-family:funFont;
+	 font-size:105%;
+	 }
+	 td:nth-child(3){
+		 text-align:center;
+		  width:15%;
+	 }
+	  td:first-child{
+	 padding:5px;
+	 overflow:hidden;
+	 width:17%;
+	text-align:center;
+	 }
+	 td{
+	 padding:5px;
+	 overflow:hidden;
+	 width:33%;
+	 }
+	 tr:nth-child(even){
+		background:#EBEBEB;
+	 }
+	 
+	 
+	 
+	 
+ 
+ 	 
+@font-face{
 	font-family:banger;
 	src:url(Bangers/Bangers.ttf);
-}  	 
+}     
  
 @font-face{
 	font-family:funFont;
@@ -50,7 +99,7 @@ body{
 
 	  /*horizontal ==========================================================*/
 
-#horizontal,#horizontal2 {
+#horizontal {
 	float:right;
 	 
 }
@@ -63,16 +112,7 @@ body{
 	 
 	  
 	  }
-	  #horizontal2 ul {
- 
-	list-style-type:none;
-	width:820px;
- 
-	margin-top:29px;
-	 
-	  
-	  }
-#horizontal ul li ,#horizontal2 ul li{
+#horizontal ul li {
 	text-align:center;
 	border:2px outset white;
 	 width: 120px;
@@ -81,7 +121,7 @@ body{
 	 
 }
  
-#horizontal li:hover ul,#horizontal2 li:hover ul{
+#horizontal li:hover ul{
 	display:block;
 	 
 	left: -5px;
@@ -92,10 +132,10 @@ body{
 	 
 	 
 }
-#horizontal li:hover ul li ,#horizontal2 li:hover ul li{
+#horizontal li:hover ul li {
 	float:none;
 }
-#horizontal ul li a ,#horizontal2 ul li a{	
+#horizontal ul li a {	
 	text-decoration:none;
 	 background:#7A9DD4;
     
@@ -106,10 +146,10 @@ body{
 }
 	
 	
-#horizontal  a:active,#horizontal2 a:active {
+#horizontal  a:active {
 	border: 5px inset #000000;
 }
-#horizontal  a:hover ,#horizontal2 a:hover{
+#horizontal  a:hover {
 	 color: #fff;
 	background-color: #214478;
 
@@ -117,14 +157,13 @@ body{
  /*header ==========================================================*/
   header{
 	  
-	    
 	   background-image: url("images/white.png");
 	   background-repeat: no-repeat;
 	       background-size:cover;
 	  position: relative;
 	  background-color:#ccc;
 	  border-bottom: 1px solid red;
-	  	  padding-bottom:3px;
+	  padding-bottom:3px;
 	  overflow:hidden;
 	 
 }
@@ -144,13 +183,12 @@ body{
 	float:right;
 	margin-right:12%;
 	margin-top:4%;
-}
-.clearfix{
+}.clearfix{
 	clear:both;	
 }
  
 #both{
-	 
+	margin:auto;
 	 
 	width:100%;
 	overflow:hidden;
@@ -164,36 +202,27 @@ body{
  }
  
  
- /*========login form in header==================================================*/
- #loginmsg{
  
- }
-#low{
-	color:red;
-	margin-left:60%;
-	width:50%;
+ /*========login form in header==================================================*/
+  #low{
+  color:red;
+ margin-left:60%;
+ width:50%;
  }
  .login{
-	font-family:"Comic Sans MS", cursive, sans-serif;
+	 font-family:"Comic Sans MS", cursive, sans-serif;
 	float:left;
 	padding:5px;
     z-index: 2;
 	 
 }
- .login h2{
-	margin: 0px auto;
- 
-  font-family:funFont;
-  font-size:22px;
- }
  #submit{
- font-family:"Comic Sans MS", cursive, sans-serif;
-	 
+	font-family:"Comic Sans MS", cursive, sans-serif;
 	background:#5E89CD;
 	color:white;
 	 
  }
- #submit:hover{
+  #submit:hover{
 	background:white;
 	color:black;
 	 
@@ -203,40 +232,89 @@ body{
 	color:white;
 	 
  }
-
- /*=======main - map area==================================================*/
- #extra{
-	min-height:400px;
- }
- .left{
+ .login h2{
+ margin: 0px auto;
  
+  font-family:funFont;
+  font-size:22px;
+ }
+ /*=======main -top of mapvdiv==================================================*/
+ 
+ 
+ 
+  #indenth2{
+	font-family:"Comic Sans MS", cursive, sans-serif;
+	text-align:center;
+  }
+ .tom{
+font-family:"Comic Sans MS", cursive, sans-serif;
+ 
+ width:90%;
+ margin:auto;
+ }
+ /*=======main - map area==================================================*/
+ .left{
+	 overflow:hidden;
 	 float:left;
-	  
+	 
 	 width:28%;
 	 margin:1%;
  }
+ 
+  #regbtn {
+	   
+	   box-shadow: 0 0 3px red;
+	   display:block;
+	   text-decoration:none;
+	   padding:2%;
+	   background:#B3D1FF;
+	   border-radius: 15px;
+	}
+#regbtn:hover {
+	 
+	   box-shadow: 0 0 3px black;
+	   color:white;
+	   display:block;
+	   background:#7A9DD4;
+	}
+#regbtn:active{
+	   
+	     box-shadow: 0 0 3px black;
+	  color:red;
+	  display:block;
+	   
+	   background:#7A9DD4;
+	   }
+#btnh2{
+	 font-family:"Comic Sans MS", cursive, sans-serif;
+	 padding:2%;
+	 margin:auto;
+	 text-align:center;
+	width:75%;
+	 
+	}
   #map-canvas{
-	float:right;
+  float:right;
   }
   #map-canvas {
-		outline:1px solid red;
+   outline:1px solid red;
 	    overflow:hidden;
         min-height: 500px;
         margin: 0px;
         padding: 0px;
-		margin:1%;
+	 margin:1%;
 		width:68%;
    }
    #main-canvas{
-		overflow:hidden;
+   overflow:hidden;
         min-height: 500px;
-        
-        padding: 1px;
-		margin:1%;
+        margin: 0px;
+        padding: 0px;
+	 margin:1%;
 		width:98%;
    }
   #loginh2{
-	font-family:"Comic Sans MS", cursive, sans-serif;
+  font-family:"Comic Sans MS", cursive, sans-serif;
 	background:#ccc;
     z-index: 6;
     position:absolute;
@@ -245,96 +323,77 @@ body{
 	padding:5px;
  }
    .maph2{
-		font-family:"Comic Sans MS", cursive, sans-serif;
-		font-size:30px;
-		text-align:center;
-		padding:5px;
+   font-family:"Comic Sans MS", cursive, sans-serif;
+   font-size:30px;
+	 
+	 text-align:center;
+	 
+	 
+	 
+     padding:5px;
  }
+  .maph23{
+   font-family:"Comic Sans MS", cursive, sans-serif;
+   
+	 
+    padding:5px;
+ }
+  
  /*========map form minus search box==================================================*/
- 
-  
    #mapForm{
-  
 	position: relative;
 	 
+	
+ }
+
+
+   
+ #textBox{
+	
+	margin-top:5px;
  }
  #userInput{
-    width:95%;
-   margin:auto;
+    margin-left:1%;
      margin-bottom:1%;
  }
- #imgup{
- width:100%;
-  margin:1% auto;
- 
+ #btnSubmit{
+	margin-top:1%;
  }
- #lbl{
-	width:18%;
- }
- #btnSubmit {
-	 width:100%;
-	 line-height:120%;
-	 outline:1px solid black;
-	 background:#7A9DD4;
-	 color:black;
-	  margin:2% auto;
- 
- }
- #imageFile{
-	  line-height:120%;
-	 outline:1px solid black;
-	 background:#7A9DD4;
-	 color:black;
-	width:80%;
-	float:right;
-	 margin:1px auto;
- 
- }
- 
- #textBox{
-	  width:99%;
-	  margin:1% auto;
-	 outline:1px solid black;
-	 background:#7A9DD4;
-	 
- }
-    
+ /*======= map form search /autocomplete area and button==================================================*/
  #btn{
-      width:95%;
-	  margin:auto;
+      width:96%;
+	  margin-left:1%;
+      z-index: 5;
       background-color: #ccc;
-    }
+      padding: 3px;
+      border: 1px solid #999;
+
+ }
  #search{
 
-	width:100%;
-	margin:1% auto;
+	width:96.3%;
+	margin-left:  1.5%;
  }
- #upload{
-    background:#ccc;
-    border:1px solid red;
-	width:100%;
-  	padding:5px;
-	 
+ #button{
+	margin-left:  1.5%;
+	width:97%;
  }
-  
 
  /*========registration form on registration page==================================================*/
   #register{
-  font-family:"Comic Sans MS", cursive, sans-serif;
-	position:relative;
     background:#ccc;
-	width:60%;
+    background:rgba(255,255,255,0.9);
+	width:33%;
     outline:1px solid red;
+   
 	padding:5px;
 	 z-index: 3;
-	 
-	 margin: 15px auto;
+	 margin: 5px auto;
  }
-
  
  
  #register label{
-	width: 33%;
+	width: 30%;
 	text-align:right;
 	display:inline-block; 
  }
@@ -345,292 +404,15 @@ body{
 	  
  }
  .regp{
-	padding-bottom:15px;
-	font-family:"Comic Sans MS", cursive, sans-serif;
- 
+  font-weight:bold;
     width:90%;
-	margin: 15px auto;
+	  margin: 15px auto;
 	  
  }
 #register input{
- 
 	margin: 5px;
 }
-#register input[type='submit']{
-	font-family:"Comic Sans MS", cursive, sans-serif;
-	margin-left: 15%;
-	background:#5E89CD;
-	color:white;
-	width:25%;
-}
-#register input[type='submit']:hover{
-	 
-	background:white;
-	color:black;
-	 
-}
-#register input[type='submit']:active{
-	 
-	background:green;
-	color:white;
-	 
-}
-/*--------contact-----------------*/
- #contact{
-  font-family:"Comic Sans MS", cursive, sans-serif;
-	position:relative;
-    background:#ccc;
-	width:50%;
-    outline:1px solid red;
-	padding:5px;
-	 z-index: 3;
-	  
-	 margin: 15px auto;
- }
-
- 
- #contact textarea{
- color:black;
-	width: 50%;
-margin-left: 15%;
- }
- #contact label{
-	width: 23%;
-	text-align:right;
-	display:inline-block; 
- }
- #contact input{
- 
-	margin: 5px;
-}
-#contact input[type='submit']{
-	font-family:"Comic Sans MS", cursive, sans-serif;
-	margin-left: 15%;
-	background:#5E89CD;
-	color:white;
-	width:25%;
-}
-#contact input[type='submit']:hover{
-	 
-	background:white;
-	color:black;
-	 
-}
-#contact input[type='submit']:active{
-	 
-	background:green;
-	color:white;
-	 
-}
-
-/*--------reset-----------------*/
- #reset{
-  font-family:"Comic Sans MS", cursive, sans-serif;
-	position:relative;
-    background:#ccc;
-	width:60%;
-	min-height:200px;
-    outline:1px solid red;
-	padding:5px;
-	 z-index: 3;
-	 
-	 margin: 15px auto;
- }
- 
- 
- #reset label{
-	width: 33%;
-	text-align:right;
-	display:inline-block; 
- }
-  
-#reset input{
- 
-	margin: 5px;
-}
-#reset input[type='submit']{
-	font-family:"Comic Sans MS", cursive, sans-serif;
-	margin-left: 5%;
-	background:#5E89CD;
-	color:white;
-	width:25%;
-}
-#reset input[type='submit']:hover{
-	 margin-left:15%;
-	background:white;
-	color:black;
-	 
-}
-#reset input[type='submit']:active{
-	 
-	background:green;
-	color:white;
-	 
-}
-
-
-
-
-/*--------reset-----------------*/
-/*--------admin page-----------------*/
-
-#deleteUser{
-	margin:auto;
-	outline:1px solid red;
-	width: 30%;
-	padding: 1%;
-	margin-bottom:1%;
-}
-#adminInfo{
-	outline:1px solid red;
-	width: 50%;
-margin: auto;
-	padding: 1%;
-	 
-
-}
-#userInformation{
-	 
- 
-	 
-	padding: 1%;
-	 
-}
-#userIn{
-	 margin:auto;
-	 
-	border-collapse:collapse;
-}
-#userIn tr:nth-child(odd){
-	background:#ccc;
-}
-#userIn th{
-	background:#5E89CD;
-}
-#userIn2 th{
-	background:#5E89CD;
-}
-#userIn2{
-
-	margin:auto;
-	margin-top: 2%;
-	border-collapse:collapse;
-}
-#userIn2 td:last-child{
-	text-align:center;
-	 
-}
-#userIn2 td:nth-child(3){
-	width: 60%;
-}
-#userIn2 tr:nth-child(odd){
-	background:#ccc;
-}
-#userIn2 td:first-child{
-	width: 10%;
-	 
-}
-#getInfo{
-width: 90%;
- padding:1%;
- margin: auto;
-clear:both;
-outline:1px solid red;
-margin-bottom: 1%;
-}
-#getInfo2{
- padding:1%;
-clear:both;
-outline:1px solid red;
-}
-#delete input{
-	margin:1%;
-}
-#get input{
-	margin:3px;
-}
-/*--------admin page-----------------*/
-
- /*========registration form on registration form alerts=================================================*/
-  #update{
-  position:absolute;
-   color:red;
-   top:17%;
-	 right:5%;
-  
-  }
-    #updates{
-  position:absolute;
-   color:red;
-   top:31%;
-	left:1%;
-  
-  }
-  
-  .err{
-	  color:red;
-	 min-height:28px;
-	 min-width:28px;
-	 position:absolute;
-	 bottom:1%;
-	 right:5%;
-	  
-	 }
-.msg{
-		position:absolute;
-		top:33%;
-		right:5%;
-		
-	 }
- .passmsg{
-	      
-		 padding:1%;
-	 width:28%;
-	  background:#ccc;
-	 	position:absolute;
-		top:7%;
-		left:67%;
-	 }
-	 .passmsg2{
- 
-	 	position:absolute;
-		top:48%;
-		right:5%;
-	 }
-	 
-	 .passmsgB{
-	      
-		 	 padding:1%;
-	 width:28%;
-	  background:#ccc;
-	 	position:absolute;
-		top:.1%;
-		left:67%;
-	 	 
-	 }
-	 .passmsg2B{
- 	 padding:1%;
-	 	 	position:absolute;
-		top:32%;
-		right:5%;
-	 }
-	   .errB{
-	   	 padding:1%;
-	  color:red;
-	 min-height:28px;
-	 min-width:28px;
-	 position:absolute;
-	 bottom:1%;
-	 right:5%;
-	  
-	 }
-	 .after{
-	 padding:1%;
-	  position:absolute;
-	 top:46%;
-	 right:2%;
-	 }
-	  /*details page ==========================================================*/ 
+  /*details page ==========================================================*/ 
 	   .details{
 	 outline:1px solid red;
 	 width:80%;
@@ -811,6 +593,7 @@ outline:1px solid red;
 #footparagraph2 div p{
 	margin-left: 15%;
 }
-</style>
-<script type="text/javascript" src="map.js"> </script>
+
+ 
+ </style><script type="text/javascript" src="index.js"> </script>
  </head>

@@ -1,9 +1,7 @@
 
 
-function init() { // now I will take that js array of sample's upload info and break it apart into several individual arrays
-
-
- //multiple Markers lat long coords array- loop through the jsArray and pull out the .location info and put it in the markers array
+function init() { // now I will take that js array of sample's upload info and break it apart into several individual arrays 
+ //multiple Markers lat long coord sarray- loop through the jsArray and pull out the .location info and put it in the markers array
    var markers=[];
    
    jsArray.forEach( function(arrItem)
@@ -82,7 +80,7 @@ function init() { // now I will take that js array of sample's upload info and b
 //-------------------------------------------------------------------------------
 
  
-//------------------create a map in the map-canvas div---------------------------------------------------	   
+//---------------------------------------------------------------------	   
    var map;
 	var bounds= new google.maps.LatLngBounds();
 	var mapOptions={
@@ -93,18 +91,14 @@ function init() { // now I will take that js array of sample's upload info and b
 	 //display map on page
   map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);// put the new map on the page using the options
    map.setTilt(45);
-   	
-	
-	 
-	//--------------------------------------------------
-	
-   // Display multiple markers info windows on a map as the loop of placing the markers is done (marker,i)see below
+   
+   //-----------------------------------------------------------
+ //--------------------------------------------------
+   // Display multiple markers info window on a map
     var infoWindow = new google.maps.InfoWindow({
-		maxWidth:480,
-		content:'<p class="popout"></p>'//this info comes from below where you see infowindow.setcontent
+		maxWidth:380,
+		content:'<p class="popout"></p>'
 	}), marker, i;
-	
-	
 	//--------------------------------------------------------------
    // Loop through our array of markers & place each one on the map  
 
@@ -133,21 +127,23 @@ function init() { // now I will take that js array of sample's upload info and b
 	}
 	//----------------------------------------------------------------
 	
-	
-	   google.maps.event.addListener(map, 'zoom_changed', (function() {
+	 google.maps.event.addListener(map, 'zoom_changed', (function() {
            
                 infoWindow.close(map, marker);
             }));
-			
-				
+	
+	
+	  
+	
+		
 	   google.maps.event.addListener(map, 'click', (function() {
            
                 infoWindow.close(map, marker);
             }));
-        
+	
 	//----------------------------------------------
 	map.fitBounds(bounds);
- }//initmakemap
+ }//doit makemap
  
 	
  

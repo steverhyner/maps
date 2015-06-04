@@ -1,5 +1,5 @@
 <?php
-require_once('../../../../require/pdoConnect.php');
+require_once('../../require/pdoConnect.php');
 $out='';
 if(isset($_POST['userName2'])&& isset($_POST['pass'])){
 	$name2=$_POST['userName2'];
@@ -19,7 +19,8 @@ if(isset($_POST['userName2'])&& isset($_POST['pass'])){
 		if($stmt->fetch()){
 					
 					$_SESSION['user']=$name2;
-					setCookie('user',$name2,time()+360000);
+					 
+					
 		}else{
 			$out.="bad user name/password";
 		}//good or bad login?
