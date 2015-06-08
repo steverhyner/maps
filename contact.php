@@ -1,5 +1,8 @@
 <?php
 SESSION_START();
+//if(empty($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on") {
+//	header("Location: https://ninja.websitewelcome.com/~steve/maps/contact.php" );
+//}//IF HTTPS
 require_once('../../require/pdoConnect.php');
  
 require_once'phpLoginCheck.php'; //this needs to go here or we will get header errors from login form refresh page header.

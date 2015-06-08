@@ -1,6 +1,8 @@
 <?php
 SESSION_START();
-
+if(isset($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] == "on") {
+	header("Location: http://maps.steverhyner.biz/index.php" );
+}//IF HTTPS
 require_once('../../require/pdoConnect.php');
 //create table for upload info
  $sql= "CREATE TABLE IF NOT EXISTS userInfo(

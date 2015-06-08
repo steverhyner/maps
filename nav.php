@@ -18,7 +18,7 @@
 			
 			 <?php
 			  if(!isset($_SESSION['user'])){
-			 ?> <li><a href="https://maps.steverhyner.biz/register.php">register</a></li>
+			 ?> <li><a href="register.php">register</a></li>
 			 <?php
 				 
 				 } ?>

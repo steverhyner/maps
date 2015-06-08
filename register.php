@@ -1,13 +1,14 @@
 <?php
 SESSION_START();
+//if(empty($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on") {
+//	header("Location: https://ninja.websitewelcome.com/~steve/maps/register.php" );
+//}//IF HTTPS
 require_once('../../require/pdoConnect.php');
 require_once'phpRegistrationCheck.php';
 require_once'phpLoginCheck.php'; //this needs to go here or we will get header errors from login form refresh page header.
 								  //this has to go above the require directly below
 //---------------------------------------
-//if(empty($_SERVER["HTTPS"]) || $_SERVER["HTTPS"] !== "on") {
-	//header("Location: https://" . $_SERVER["HTTP_HOST"] . 	$_SERVER["REQUEST_URI"]);
-//}//IF HTTPS
+
 //---------------------------------------
 $names=array();
 $userName=$_SESSION['user'];
